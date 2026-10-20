@@ -355,7 +355,15 @@
     const count = () => Math.round(Math.min(light ? 60 : 90, Math.max(18, (W * H) / (touch ? (light ? 34000 : 26000) : (light ? 22000 : 16000)))));
     const C = light ? { core: '214,170,70', mid: '169,133,47', dot: '150,112,30', mul: 0.75 } : { core: '227,201,127', mid: '198,162,77', dot: '255,240,200', mul: 1 };
     const mk = (fresh) => ({ x: Math.random() * W, y: fresh ? H + 10 : Math.random() * H, r: 0.6 + Math.random() * 1.8, s: 0.12 + Math.random() * 0.28, a: Math.random() * Math.PI * 2, sw: 0.15 + Math.random() * 0.35, tw: Math.random() * Math.PI * 2, ts: 0.01 + Math.random() * 0.02, o: 0.25 + Math.random() * 0.55 });
-    const size = () => { const r = sec.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); parts = Array.from({ length: count() }, () => mk(false)); };
+    const size = () => {
+      const r = sec.getBoundingClientRect(); const oW = W, oH = H;
+      if (oW && Math.abs(r.width - oW) < 2 && Math.abs(r.height - oH) < 160) return; // address bar show/hide: ignore
+      W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!parts.length) { parts = Array.from({ length: count() }, () => mk(false)); return; }
+      const sx = oW ? W / oW : 1, sy = oH ? H / oH : 1;
+      parts.forEach(p => { p.x *= sx; p.y *= sy; });
+      const n = count(); while (parts.length < n) parts.push(mk(false)); if (parts.length > n) parts.length = n;
+    };
     const tick = () => {
       if (!run) { raf = null; return; }
       ctx.clearRect(0, 0, W, H);
@@ -372,7 +380,7 @@
     };
     const io = new IntersectionObserver(es => { run = es[0].isIntersecting; if (run && !raf) raf = requestAnimationFrame(tick); });
     size(); io.observe(sec);
-    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 250); });
     document.addEventListener('visibilitychange', () => { if (document.hidden) run = false; else { run = true; if (!raf) raf = requestAnimationFrame(tick); } });
   });
 
