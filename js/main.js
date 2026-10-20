@@ -343,6 +343,15 @@
 
   $$('#yr').forEach(el => { el.textContent = new Date().getFullYear(); });
 
+  /* ---------- ambient background on dark sections ---------- */
+  $$('.hero, .cta, section.dark, footer').forEach(sec => {
+    if ($('.bgfx', sec)) return;
+    const fx = document.createElement('div'); fx.className = 'bgfx'; fx.setAttribute('aria-hidden', 'true');
+    fx.innerHTML = '<div class="hex"></div><i class="b1"></i><i class="b2"></i><i class="b3"></i>';
+    if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
+    sec.insertBefore(fx, sec.firstChild);
+  });
+
   /* ---------- boot ---------- */
   scrollFx();
   runIntro();

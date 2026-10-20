@@ -548,3 +548,21 @@ html.touch [data-reveal="group"]{opacity:1;transform:none}
 html.touch [data-reveal="group"]>*{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.2,1)}
 html.touch .in[data-reveal],html.touch .in[data-split],html.touch .in[data-clip],html.touch [data-reveal="group"].in>*{opacity:1;transform:none}
 html.touch .timeline .tl-line{transition:transform 1.2s ease}
+
+/* ---------- ambient background (dark sections) ---------- */
+.bgfx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.hero .bgfx,.cta .bgfx{z-index:-1}
+.bgfx i{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;opacity:.9}
+.bgfx .b1{width:60vw;height:60vw;max-width:720px;max-height:720px;left:-18vw;top:-20vw;background:radial-gradient(circle,rgba(198,162,77,.26),rgba(198,162,77,0) 65%);animation:drift1 26s ease-in-out infinite alternate}
+.bgfx .b2{width:54vw;height:54vw;max-width:640px;max-height:640px;right:-16vw;bottom:-18vw;background:radial-gradient(circle,rgba(70,96,150,.34),rgba(70,96,150,0) 65%);animation:drift2 32s ease-in-out infinite alternate}
+.bgfx .b3{width:36vw;height:36vw;max-width:420px;max-height:420px;left:40%;top:30%;background:radial-gradient(circle,rgba(227,201,127,.14),rgba(227,201,127,0) 65%);animation:drift3 38s ease-in-out infinite alternate}
+.bgfx .hex{position:absolute;inset:-20%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='112' height='194' viewBox='0 0 112 194'%3E%3Cg fill='none' stroke='%23c6a24d' stroke-opacity='.11' stroke-width='1'%3E%3Cpath d='M56 1L111 33v64L56 129 1 97V33z'/%3E%3Cpath d='M56 129l55 32v64M56 129L1 161v64'/%3E%3C/g%3E%3C/svg%3E");background-size:112px 194px;-webkit-mask-image:radial-gradient(70% 70% at 70% 40%,#000 0%,transparent 75%);mask-image:radial-gradient(70% 70% at 70% 40%,#000 0%,transparent 75%);animation:hexdrift 60s linear infinite;will-change:transform}
+.hero>.wrap,.cta>.wrap,.dark>.wrap,footer>.wrap{position:relative;z-index:1}
+@keyframes drift1{to{transform:translate(14vw,10vw) scale(1.15)}}
+@keyframes drift2{to{transform:translate(-12vw,-10vw) scale(1.1)}}
+@keyframes drift3{to{transform:translate(-10vw,12vw)}}
+@keyframes hexdrift{to{transform:translate(-112px,-194px)}}
+@media (max-width:760px){.bgfx i{filter:blur(60px)}.bgfx .hex{-webkit-mask-image:radial-gradient(90% 60% at 60% 30%,#000 0%,transparent 75%);mask-image:radial-gradient(90% 60% at 60% 30%,#000 0%,transparent 75%)}}
+@media (prefers-reduced-motion:reduce){.bgfx i,.bgfx .hex{animation:none}}
+.hero .glow{display:none}
+@media (max-width:760px){.hero .bgfx .hex{display:none}}
