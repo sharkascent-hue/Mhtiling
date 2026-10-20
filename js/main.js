@@ -55,6 +55,13 @@
   }
 
   function enter() { heroIn(); }
+  const loader = $('#loader');
+  function finishIntro() { if (loader) loader.remove(); html.classList.remove('intro', 'intro-out'); enter(); }
+  function runIntro() {
+    try { sessionStorage.setItem('mh_intro', '1'); } catch (e) {}
+    if (!loader || !html.classList.contains('intro') || reduce) { finishIntro(); return; }
+    setTimeout(() => { html.classList.add('intro-out'); setTimeout(finishIntro, 680); }, 2150);
+  }
 
   /* ---------- hero entrance ---------- */
   let heroDone = false;
@@ -338,6 +345,6 @@
 
   /* ---------- boot ---------- */
   scrollFx();
-  enter();
+  runIntro();
   window.addEventListener('load', () => { ST && ScrollTrigger.refresh(); });
 })();

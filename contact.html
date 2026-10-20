@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#161c29">
-<script>document.documentElement.classList.add('has-js')</script>
+<script>document.documentElement.classList.add('has-js');try{if(!sessionStorage.getItem('mh_intro'))document.documentElement.classList.add('intro')}catch(e){}setTimeout(function(){document.documentElement.classList.remove('intro')},6000)</script>
 <!--
   MH TILING & BATHROOM RENOVATIONS — TO FILL IN BEFORE LAUNCH (search "TODO"):
     1. Web3Forms access key (contact.html hidden input)
@@ -54,6 +54,17 @@
 </head>
 <body data-root="">
 
+<div id="loader" aria-hidden="true">
+  <div>
+    <svg viewBox="0 0 220 220">
+      <polygon class="hex" points="110,8 198,59 198,161 110,212 22,161 22,59"/>
+      <polygon class="hex b" points="110,24 184,67 184,153 110,196 36,153 36,67"/>
+      <text class="mh" x="110" y="134" text-anchor="middle">MH</text>
+    </svg>
+    <div class="lt">Tiling &amp; Bathroom Renovations</div>
+    <div class="line"></div>
+  </div>
+</div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"><span>VIEW</span></div>
 
 <header class="nav">
