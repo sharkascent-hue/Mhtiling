@@ -219,8 +219,8 @@
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
-  const here = location.pathname.split('/').pop() || 'index.html';
-  $$('.links a, .menu a').forEach(a => { const f = a.getAttribute('href').split('/').pop(); if (f === here || (location.pathname.includes('/blog/') && f === 'blog.html')) a.classList.add('on'); });
+  const here = (location.pathname.replace(/\/$/, '').split('/').pop() || 'index').replace(/\.html$/, '') || 'index';
+  $$('.links a, .menu a').forEach(a => { const f = (a.getAttribute('href').replace(/\/$/, '').split('/').pop() || 'index').replace(/\.html$/, '') || 'index'; if (f === here || (location.pathname.includes('/blog/') && f === 'blog')) a.classList.add('on'); });
   $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (t) { e.preventDefault(); scrollTo(t); } }));
 
   /* ---------- cursor + magnetic (desktop only) ---------- */
@@ -277,7 +277,7 @@
       b.addEventListener('click', () => openLb(i, 0));
       track.appendChild(b);
     });
-    const cta = document.createElement('a'); cta.className = 'item cta'; cta.href = R + 'gallery.html';
+    const cta = document.createElement('a'); cta.className = 'item cta'; cta.href = '/gallery';
     cta.innerHTML = `<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8l4 4-4 4"/></svg><h3>See all ${P.length} projects</h3><p>Open the full gallery</p></div>`;
     track.appendChild(cta);
   }
@@ -286,7 +286,7 @@
   const lb = $('#lb');
   let cur = 0, idx = 0, lastFocus = null;
   function openLb(i, k) {
-    if (!lb) { location.href = R + 'gallery.html'; return; }
+    if (!lb) { location.href = '/gallery'; return; }
     cur = i; idx = k; lastFocus = document.activeElement;
     const p = P[i]; $('#lbTitle').textContent = p.t; $('#lbDesc').textContent = p.d;
     const th = $('#lbThumbs'); th.innerHTML = p.ph.map((f, n) => `<button aria-label="Photo ${n + 1}"><img src="${R}img/${f}.jpg" alt=""></button>`).join('');
