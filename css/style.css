@@ -597,11 +597,7 @@ html.touch .timeline .tl-line{transition:transform 1.2s ease}
 .card::after{background:linear-gradient(90deg,#a9852f,#e6cd86,#a9852f)}
 
 /* ---------- contact page: no sideways scroll ---------- */
-html{overflow-x:hidden}
 .cinfo li>div{min-width:0;flex:1}
 .cinfo li a,.cinfo li span{overflow-wrap:anywhere;word-break:break-word}
 .social a{max-width:100%}
 
-/* ---------- particles on light sections ---------- */
-section:not(.dark):not(.hero):not(.cta)>.wrap{position:relative;z-index:1}
-.bgfx.light::after{background:radial-gradient(70% 50% at 50% 100%,rgba(169,133,47,.07),transparent 70%)}

@@ -344,9 +344,8 @@
   $$('#yr').forEach(el => { el.textContent = new Date().getFullYear(); });
 
   /* ---------- ambient background: gold dust particles ---------- */
-  if (!reduce) $$('.hero, .cta, section, footer').forEach(sec => {
-    if (sec.classList.contains('facts') || sec.classList.contains('hs')) return;
-    const light = !(sec.classList.contains('hero') || sec.classList.contains('cta') || sec.classList.contains('dark') || sec.tagName === 'FOOTER');
+  if (!reduce) $$('.hero, .cta, section.dark, footer').forEach(sec => {
+    const light = false;
     if ($('.bgfx', sec)) return;
     const fx = document.createElement('div'); fx.className = 'bgfx' + (light ? ' light' : ''); fx.setAttribute('aria-hidden', 'true');
     const cv = document.createElement('canvas'); fx.appendChild(cv);
