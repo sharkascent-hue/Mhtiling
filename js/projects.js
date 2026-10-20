@@ -1,0 +1,28 @@
+/* Project data shared by the home showcase and the gallery page.
+   Photos live in img/<name>.jpg. First photo in each list is the cover. */
+window.MH_PROJECTS = [
+  { t:"Marble & matt black family bathroom", loc:"Family bathroom", d:"Large-format white marble-effect porcelain floor to ceiling, walk-in shower with black grid screen, matt black brassware, black vertical radiator and a wall-hung vanity with oak open shelf.", tags:["marble"], sw:["#f1f0ec","#1b1b1b","#b98d5c"],
+    ph:["marble-black-crittall","marble-black-vanity","marble-black-shower","marble-black-floor","marble-black-radiator"] },
+  { t:"Copper & sage en-suite", loc:"En-suite", d:"Grey stone-effect porcelain with a linear textured feature wall, fluted sage vanity with countertop basin, brushed copper rainfall shower and flush plate, wall-hung WC and a timber-lined niche.", tags:["stone","bold"], sw:["#a9a49b","#3f5248","#9c5a3c"],
+    ph:["copper-vanity","copper-vanity-window","copper-shower","copper-wc-niche"] },
+  { t:"Beige marble with freestanding bath", loc:"Full renovation", d:"Full strip-out of a 90s suite. Beige marble-effect porcelain, freestanding bath, walk-in shower with frameless screen, navy wall-hung vanity with tall unit and LED mirror.", tags:["marble"], sw:["#c9b9a4","#2e3f55","#e8e4de"],
+    ph:["bath-after","bath-vanity","bath-shower-progress","bath-before"] },
+  { t:"Slat-wall cloakroom with lit niches", loc:"Cloakroom & shower", d:"Micro-cement look porcelain in warm greige, oak slat feature wall over a tiled cistern box, three LED-lit recessed niches, wall-hung WC and compact vanity with oval backlit mirror.", tags:["stone","bold"], sw:["#cfc6b8","#b89a7a","#e9ddc4"],
+    ph:["slat-oval-mirror","slat-wc","slat-shower-niches","slat-niche-detail","slat-shower-chrome","slat-niche-wide","slat-oval-wc"] },
+  { t:"Stone en-suite with lit shower niche", loc:"En-suite", d:"Limestone-effect porcelain, walk-in shower with linear drain and fixed glass panel, LED-lit metro-tiled niche, oak wall-hung vanity, chrome fittings and oval backlit mirror.", tags:["stone","compact"], sw:["#c3bbae","#b58a5a","#d9d5cf"],
+    ph:["stone-ensuite-mirror","stone-ensuite-shower","stone-ensuite-wc"] },
+  { t:"Calacatta gold & oak", loc:"Shower room", d:"Gloss white Calacatta-effect porcelain with warm gold veining, brushed brass shower kit and basin tap, gold-trim shower screen, oak vanity and back-to-wall WC unit, white radiator with brass brackets.", tags:["marble","bold"], sw:["#f3efe6","#c6a24d","#d1a877"],
+    ph:["gold-vanity","gold-wc"] },
+  { t:"Wood-plank shower with patterned niche", loc:"Shower room", d:"Wood-effect plank tiles laid in a staggered bond, patterned encaustic-style floor carried into the shower niche, black rainfall shower, black-framed screen and dark vanity.", tags:["bold","compact"], sw:["#b89a78","#2c2c2c","#d9d2c0"],
+    ph:["wood-plank-room","wood-plank-niche"] },
+  { t:"Grey-vein marble bathroom", loc:"Bathroom", d:"Bold grey-vein marble-effect porcelain, bath with glass screen, oak vanity with black handles, black basin tap, LED mirror and chrome heated towel rail.", tags:["marble","compact"], sw:["#eeeeea","#555","#c9a97c"],
+    ph:["greyvein-vanity","greyvein-bath"] },
+  { t:"Beige slate shower room", loc:"Shower room", d:"Slate-effect porcelain in soft beige on walls and floor, sliding shower enclosure with tiled bench, white vanity, black heated rail and LED mirror.", tags:["stone","compact"], sw:["#d5ccbf","#222","#f4f2ee"],
+    ph:["slate-room","slate-vanity"] },
+  { t:"Black marble cloakroom", loc:"Cloakroom", d:"Dramatic black marble-effect porcelain with copper and white veining, chrome curved towel rail, white vanity and rounded LED mirror. Small room, big impact.", tags:["bold","compact"], sw:["#1e2430","#b07a52","#f4f4f4"],
+    ph:["black-marble"] },
+  { t:"Blush brick & terrazzo", loc:"Shower room", d:"Pink gloss brick-format tiles in the shower, soft white walls, terrazzo-look hexagon floor, fluted oak vanity with countertop basin, white tap, wall-hung WC and white towel rail.", tags:["bold","compact"], sw:["#e2c4bd","#c9a77e","#e7e0e3"],
+    ph:["pink-shower","pink-wc"] },
+  { t:"Grey & matt black shower room", loc:"Shower room", d:"Grey marble-effect porcelain to half height, black-framed shower enclosure, matt black rainfall shower and tap, black vanity, black radiator and rounded LED mirror.", tags:["stone","compact"], sw:["#b9bcc0","#1c1c1c","#f1f1f1"],
+    ph:["grey-black-vanity","grey-black-shower"] },
+];
