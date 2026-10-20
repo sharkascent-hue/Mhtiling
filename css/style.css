@@ -494,6 +494,13 @@ footer .brand{margin-bottom:18px}
   .srow.flip .media{order:0}
 }
 @media (max-width:760px){
+  section{padding:56px 0}
+  .head{margin-bottom:28px}
+  .head p{margin-top:12px}
+  .eyebrow{margin-bottom:12px}
+  .srow{padding:40px 0}
+  .phero{padding:130px 0 48px;min-height:0}
+  .cta .wrap{gap:24px}
   .links,.nav .btn-gold{display:none}
   .burger{display:block}
   .brand img{width:44px;height:44px}
@@ -536,7 +543,7 @@ footer .brand{margin-bottom:18px}
 }
 
 /* ---------- touch devices: CSS reveals (smooth on iOS) ---------- */
-html.touch [data-reveal],html.touch [data-split]:not(.hero *):not(.phero *),html.touch [data-clip]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.2,1)}
+html.touch [data-reveal],html.touch [data-split],html.touch [data-clip]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.2,1)}
 html.touch [data-reveal="group"]{opacity:1;transform:none}
 html.touch [data-reveal="group"]>*{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.2,1)}
 html.touch .in[data-reveal],html.touch .in[data-split],html.touch .in[data-clip],html.touch [data-reveal="group"].in>*{opacity:1;transform:none}
