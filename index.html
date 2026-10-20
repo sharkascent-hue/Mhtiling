@@ -4,15 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#161c29">
-<script>document.documentElement.classList.add('has-js');try{if(!sessionStorage.getItem('mh_intro')){document.documentElement.classList.add('intro')}else{document.documentElement.classList.add('entering')}}catch(e){document.documentElement.classList.add('entering')}</script>
+<script>document.documentElement.classList.add('has-js');setTimeout(function(){document.documentElement.classList.add('ready')},1500)</script>
 <!--
   MH TILING & BATHROOM RENOVATIONS — TO FILL IN BEFORE LAUNCH (search "TODO"):
-    1. Phone number        (every data-phone link)
-    2. Email address       (every data-email link)
-    3. Instagram URL       (every data-instagram link)
-    4. Facebook URL        (every data-facebook link)
-    5. Web3Forms access key (contact.html hidden input)
-    6. Final domain        (canonical / og:url / JSON-LD)
+    1. Email address       (every data-email link)
+    2. Web3Forms access key (contact.html hidden input)
+    3. Final domain        (canonical / og:url / JSON-LD)
 -->
 <title>MH Tiling &amp; Bathroom Renovations | Bathroom Renovations in Tipperary</title>
 <meta name="description" content="Complete bathroom renovations, tiling, wet rooms, en-suites and cloakrooms across Tipperary and surrounding counties. One trade from strip-out to handover. Free quotations.">
@@ -48,6 +45,8 @@
   "logo": "https://mhtiling.ie/img/logo.jpg",
   "address": { "@type": "PostalAddress", "addressRegion": "County Tipperary", "addressCountry": "IE" },
   "areaServed": ["Tipperary","Clonmel","Thurles","Nenagh","Cashel","Tipperary Town","Carrick-on-Suir","Cahir","Roscrea","Templemore","Limerick","Kilkenny","Waterford","Cork"],
+  "telephone": "+353 87 670 3666",
+  "sameAs": ["https://www.facebook.com/share/1DWJH2WzwZ/?mibextid=wwXIfr","https://www.instagram.com/mhtilingandbathrooms/"],
   "priceRange": "€€",
   "knowsAbout": ["Bathroom renovation","Wall and floor tiling","Wet rooms","Walk-in showers","En-suite installation"]
 }
@@ -55,23 +54,6 @@
 </head>
 <body data-root="">
 
-<!-- intro loader (first visit per session) -->
-<div id="loader" aria-hidden="true">
-  <div class="lp one"></div><div class="lp two"></div>
-  <div class="lc">
-    <div>
-      <svg viewBox="0 0 220 220" aria-hidden="true">
-        <polygon class="hex" points="110,8 198,59 198,161 110,212 22,161 22,59"/>
-        <polygon class="hex" points="110,24 184,67 184,153 110,196 36,153 36,67"/>
-        <text class="mh" x="110" y="134" text-anchor="middle">MH</text>
-      </svg>
-      <div class="lt"><span>Tiling &amp; Bathroom Renovations</span></div>
-    </div>
-  </div>
-  <div class="num">0</div>
-  <div class="bar"><i></i></div>
-</div>
-<div id="transition" aria-hidden="true"><div class="tp g"></div><div class="tp"></div></div>
 <div class="cursor" aria-hidden="true"></div><div class="cursor-ring" aria-hidden="true"><span>VIEW</span></div>
 
 <header class="nav">
@@ -100,7 +82,7 @@
   <a href="blog.html">Blog<i>05</i></a>
   <a href="contact.html">Contact<i>06</i></a>
   <a href="contact.html" class="btn btn-gold">Get a free quote</a>
-  <div class="soc"><a href="https://www.instagram.com/" target="_blank" rel="noopener" data-instagram>Instagram</a><a href="https://www.facebook.com/" target="_blank" rel="noopener" data-facebook>Facebook</a></div>
+  <div class="soc"><a href="https://www.instagram.com/mhtilingandbathrooms/" target="_blank" rel="noopener" data-instagram>Instagram</a><a href="https://www.facebook.com/share/1DWJH2WzwZ/?mibextid=wwXIfr" target="_blank" rel="noopener" data-facebook>Facebook</a></div>
 </div>
 <main>
 <section class="hero">
@@ -110,8 +92,8 @@
   <div class="wrap">
     <div>
       <span class="eyebrow">Tipperary &amp; surrounding counties</span>
-      <h1>Bathrooms done <em class="g">properly,</em> from strip-out to final clean.</h1>
-      <p class="lead">MH Tiling &amp; Bathroom Renovations design, tile and fit complete bathrooms, en-suites, wet rooms and cloakrooms. One trade, one point of contact, and a finish you’ll want to show people.</p>
+      <h1>Bathrooms &amp; tiling done <em class="g">properly,</em> from strip-out to final clean.</h1>
+      <p class="lead">MH Tiling &amp; Bathroom Renovations design, tile and fit complete bathrooms, en-suites, wet rooms and cloakrooms across Tipperary. Tiling-only jobs welcome too. One trade, one point of contact, and a finish you’ll want to show people.</p>
       <div class="btn-row">
         <a href="contact.html" class="btn btn-gold">Get a free quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a href="gallery.html" class="btn btn-outline">See our work</a>
@@ -119,7 +101,7 @@
       <div class="trust">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Free, no-obligation quotations</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Fully insured</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Bathrooms &amp; tiling only</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Full renovations or tiling only</span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Help choosing tiles &amp; fittings</span>
       </div>
     </div>
@@ -138,8 +120,8 @@
 
 <div class="marquee" aria-hidden="true">
   <div class="track">
-    <span>Full bathroom renovations</span><span>Wall &amp; floor tiling</span><span>Walk-in showers &amp; wet rooms</span><span>En-suites &amp; cloakrooms</span><span>LED niches &amp; feature walls</span><span>Tipperary &amp; surrounding counties</span>
-    <span>Full bathroom renovations</span><span>Wall &amp; floor tiling</span><span>Walk-in showers &amp; wet rooms</span><span>En-suites &amp; cloakrooms</span><span>LED niches &amp; feature walls</span><span>Tipperary &amp; surrounding counties</span>
+    <div class="group"><span>Full bathroom renovations</span><span>Wall &amp; floor tiling</span><span>Walk-in showers &amp; wet rooms</span><span>En-suites &amp; cloakrooms</span><span>LED niches &amp; feature walls</span><span>Tipperary &amp; surrounding counties</span></div>
+    <div class="group"><span>Full bathroom renovations</span><span>Wall &amp; floor tiling</span><span>Walk-in showers &amp; wet rooms</span><span>En-suites &amp; cloakrooms</span><span>LED niches &amp; feature walls</span><span>Tipperary &amp; surrounding counties</span></div>
   </div>
 </div>
 
@@ -232,6 +214,53 @@
   </div>
 </section>
 
+<section class="dark" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel" style="background:var(--navy-mid)">
+      <div class="split" style="align-items:center">
+        <div>
+          <span class="eyebrow">Tiling only</span>
+          <h3 style="font-size:2rem">Already have a plumber? We’ll do the tiling.</h3>
+          <p>Floors, walls, splashbacks and feature walls. Large-format porcelain is our speciality, and we set out every room before the first tile goes down.</p>
+        </div>
+        <div class="btn-row" style="justify-content:flex-end"><a href="services.html#tiling" class="btn btn-gold">Tiling service <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a href="https://wa.me/353876703666" target="_blank" rel="noopener" class="btn btn-outline">WhatsApp us</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" aria-label="Four details that make a bathroom last">
+  <div class="tall">
+    <div class="stick">
+      <div class="wrap fgrid2">
+        <div>
+          <div class="head">
+            <span class="eyebrow">What you’re paying for</span>
+            <h2>One en-suite, four details. Scroll to see them.</h2>
+            <p class="lead">The bits that separate a bathroom that looks good on day one from one that still looks good in ten years.</p>
+          </div>
+          <div class="mstage"><span class="n">01</span><h3></h3><p></p><div class="bar"><i></i></div></div>
+          <ol class="stages">
+            <li data-px="19" data-py="27" data-z="1.9"><span class="n">01</span><h3>Backlit mirror, wired in first</h3><p>The cable runs inside the wall before a tile goes on, so there is no trailing flex and the switch is a touch sensor on the glass.</p><div class="bar"><i></i></div></li>
+            <li data-px="79" data-py="40" data-z="2.2"><span class="n">02</span><h3>Lit niche with mitred edges</h3><p>Cut into the wall, tanked, tiled with 45-degree mitred edges instead of plastic trim, and lit by a hidden LED strip.</p><div class="bar"><i></i></div></li>
+            <li data-px="61" data-py="83" data-z="2.3"><span class="n">03</span><h3>Linear drain with a true fall</h3><p>The floor is screeded to fall one way, tanked, and flood-tested before tiling. That is what keeps a wet room dry underneath.</p><div class="bar"><i></i></div></li>
+            <li data-px="32" data-py="82" data-z="2"><span class="n">04</span><h3>Wall-hung vanity, floor runs under</h3><p>Fixed to a hidden frame so the floor tile carries on underneath. Easier to clean, and a small room looks bigger.</p><div class="bar"><i></i></div></li>
+          </ol>
+        </div>
+        <div class="cam-frame">
+          <div class="cam">
+            <img src="img/stone-ensuite-mirror.jpg" alt="Stone-effect en-suite with backlit oval mirror, oak vanity, LED-lit niche and linear drain" loading="lazy">
+            <div class="pin on" data-s="0" style="--px:19%;--py:27%"><div class="dot"></div><div class="txt">Touch-switch LED mirror</div></div>
+            <div class="pin left" data-s="1" style="--px:79%;--py:40%"><div class="dot"></div><div class="txt">Mitred, LED-lit niche</div></div>
+            <div class="pin left" data-s="2" style="--px:61%;--py:83%"><div class="dot"></div><div class="txt">Linear drain, true fall</div></div>
+            <div class="pin" data-s="3" style="--px:32%;--py:82%"><div class="dot"></div><div class="txt">Wall-hung, tile runs under</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section>
   <div class="wrap">
     <div class="head center">
@@ -274,7 +303,7 @@
     <div data-reveal><h2 data-split>Ready for a bathroom you’ll be proud of?</h2><p class="lead">Send a few photos and rough sizes and we’ll come back with an honest idea of cost. Free site visit, written quotation, no pressure.</p></div>
     <div class="btn-row" data-reveal>
       <a href="contact.html" class="btn btn-gold">Get a free quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      <a href="tel:+353000000000" class="btn btn-outline" data-phone>Call us</a><!-- TODO phone -->
+      <a href="tel:+353876703666" class="btn btn-outline" data-phone>Call us</a>
     </div>
   </div>
 </section>
@@ -285,9 +314,9 @@
     <div><h3 id="lbTitle"></h3><p id="lbDesc"></p></div>
     <button class="lb-close" id="lbClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
   </div>
-  <div class="lb-stage">
+  <div class="lb-stage"><img id="lbImg" src="" alt=""></div>
+  <div class="lb-nav">
     <button class="lb-arrow prev" id="lbPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
-    <img id="lbImg" src="" alt="">
     <button class="lb-arrow next" id="lbNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
   <div class="lb-thumbs" id="lbThumbs"></div>
@@ -324,10 +353,10 @@
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+353000000000" data-phone>+353 00 000 0000</a></li><!-- TODO phone -->
+          <li><a href="tel:+353876703666" data-phone>+353 87 670 3666</a></li>
           <li><a href="mailto:info@mhtiling.ie" data-email>info@mhtiling.ie</a></li><!-- TODO email -->
-          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener" data-instagram>Instagram</a></li><!-- TODO -->
-          <li><a href="https://www.facebook.com/" target="_blank" rel="noopener" data-facebook>Facebook</a></li><!-- TODO -->
+          <li><a href="https://www.instagram.com/mhtilingandbathrooms/" target="_blank" rel="noopener" data-instagram>Instagram</a></li>
+          <li><a href="https://www.facebook.com/share/1DWJH2WzwZ/?mibextid=wwXIfr" target="_blank" rel="noopener" data-facebook>Facebook</a></li>
           <li>County Tipperary, Ireland</li>
         </ul>
       </div>
