@@ -3,6 +3,8 @@
 window.MH_PROJECTS = [
   { t:"Palm feature wall with brushed brass", loc:"Master bathroom", d:"Large-format beige marble-effect porcelain with a backlit palm-leaf feature wall, freestanding bath with brass floor-standing filler, walk-in shower with brass trims, ceiling rainfall head and lit niche, dark green wall-hung vanity and round brass mirror.", tags:["marble","bold"], sw:["#d9cdb8","#4a3b2e","#b9933f"],
     ph:["palm-room","palm-vanity","palm-shower-wide","palm-niche"] },
+  { t:"Slat-tile wet room with double vanity", loc:"Master en-suite", d:"Full wet room with oak slat-effect porcelain walls, ceiling-mounted matt black rainfall head, black thermostatic valve and recessed niche, linear drain, frameless black-trim screen, double basin wall-hung vanity in charcoal with oak open shelves, and a black heated rail.", tags:["stone","bold"], sw:["#8a7a66","#2b2b2b","#d9cfbd"],
+    ph:["slat-ensuite-room","slat-ensuite-vanity","slat-ensuite-shower","slat-ensuite-rail","slat-ensuite-wc"] },
   { t:"Marble & matt black family bathroom", loc:"Family bathroom", d:"Large-format white marble-effect porcelain floor to ceiling, walk-in shower with black grid screen, matt black brassware, black vertical radiator and a wall-hung vanity with oak open shelf.", tags:["marble"], sw:["#f1f0ec","#1b1b1b","#b98d5c"],
     ph:["marble-black-crittall","marble-black-vanity","marble-black-shower","marble-black-floor","marble-black-radiator"] },
   { t:"Copper & sage en-suite", loc:"En-suite", d:"Grey stone-effect porcelain with a linear textured feature wall, fluted sage vanity with countertop basin, brushed copper rainfall shower and flush plate, wall-hung WC and a timber-lined niche.", tags:["stone","bold"], sw:["#a9a49b","#3f5248","#9c5a3c"],
