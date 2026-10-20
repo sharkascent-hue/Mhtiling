@@ -12,6 +12,7 @@
   const ST = G && typeof ScrollTrigger !== 'undefined';
   if (ST) gsap.registerPlugin(ScrollTrigger);
   if (!G) html.classList.add('no-gsap');
+  if (touch) html.classList.add('touch');
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const clamp = (v, a, b) => Math.min(Math.max(v, a), b);
@@ -53,17 +54,7 @@
     return $$('.w > span', el);
   }
 
-  /* ---------- page fade in / out ---------- */
-  function enter() { html.classList.add('ready'); heroIn(); }
-  document.addEventListener('click', e => {
-    const a = e.target.closest('a[href]'); if (!a) return;
-    const href = a.getAttribute('href');
-    if (reduce || a.target === '_blank' || a.hasAttribute('download') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || a.origin !== location.origin || e.metaKey || e.ctrlKey) return;
-    if (a.pathname === location.pathname && a.hash) return;
-    e.preventDefault(); html.classList.add('leaving');
-    setTimeout(() => { location.href = a.href; }, 300);
-  });
-  window.addEventListener('pageshow', e => { if (e.persisted) html.classList.remove('leaving'); });
+  function enter() { heroIn(); }
 
   /* ---------- hero entrance ---------- */
   let heroDone = false;
@@ -93,8 +84,28 @@
   }
 
   /* ---------- scroll animations ---------- */
+  function touchFx() {
+    const els = $$('[data-reveal],[data-split],[data-clip]').filter(el => !el.closest('.hero, .phero'));
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return; const el = e.target;
+      if (el.dataset.reveal === 'group') [...el.children].forEach((c, i) => { c.style.transitionDelay = (i * 60) + 'ms'; });
+      el.classList.add('in'); io.unobserve(el);
+    }), { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => io.observe(el));
+    $$('[data-count]').forEach(el => {
+      const end = parseFloat(el.dataset.count), suf = el.dataset.suffix || '';
+      const o = new IntersectionObserver(es => { if (!es[0].isIntersecting) return; o.disconnect(); const t0 = performance.now();
+        const step = t => { const p = Math.min(1, (t - t0) / 1400); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))) + suf; if (p < 1) requestAnimationFrame(step); }; requestAnimationFrame(step); });
+      o.observe(el);
+    });
+    $$('.timeline .tl-line').forEach(el => { const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { el.style.transform = 'scaleY(1)'; o.disconnect(); } }, { threshold: 0.2 }); o.observe(el.parentElement); });
+    const rp = $('.rp i'), art = $('.article');
+    if (rp && art) window.addEventListener('scroll', () => { const r = art.getBoundingClientRect(); rp.style.transform = 'scaleX(' + clamp(-r.top / (r.height - innerHeight + 80), 0, 1) + ')'; }, { passive: true });
+  }
   function scrollFx() {
-    if (!ST || reduce) return;
+    if (reduce) return;
+    if (touch) { touchFx(); return; }
+    if (!ST) return;
     gsap.defaults({ ease: 'power3.out' });
     const dur = touch ? 0.7 : 1, dist = touch ? 24 : 40;
     $$('[data-reveal]').forEach(el => {
@@ -147,23 +158,6 @@
     }
   }
 
-  /* ---------- marquee (JS driven so font loading cannot break the loop) ---------- */
-  $$('.marquee').forEach(mq => {
-    const track = $('.track', mq), group = $('.group', mq);
-    if (!track || !group || !G || reduce) return;
-    let tween = null;
-    const start = () => {
-      if (tween) tween.kill();
-      const w = group.offsetWidth; if (!w) return;
-      gsap.set(track, { x: 0 });
-      tween = gsap.to(track, { x: -w, duration: w / 55, ease: 'none', repeat: -1 });
-    };
-    start();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
-    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(start, 200); });
-    if (fine) { mq.addEventListener('mouseenter', () => tween && tween.pause()); mq.addEventListener('mouseleave', () => tween && tween.play()); }
-  });
-
   /* ---------- facts: pinned camera section ---------- */
   const facts = $('.facts');
   if (facts) {
@@ -171,16 +165,15 @@
     const pins = $$('.pin', facts), lis = $$('.stages li', facts), ms = $('.mstage', facts);
     const stages = lis.map(li => ({ px: +li.dataset.px, py: +li.dataset.py, z: +li.dataset.z, h: $('h3', li).textContent, p: $('p', li).textContent }));
     const n = stages.length;
-    let cur = { tx: 0, ty: 0, z: 1 }, target = { tx: 0, ty: 0, z: 1 }, stage = -1, raf = null, running = false;
+    let stage = -1, running = false;
     function setStage(i, within) {
       const s = stages[i], W = frame.clientWidth, H = frame.clientHeight;
       if (!W || !H) return;
-      const z = reduce ? 1 : s.z;
-      target.z = z;
-      target.tx = clamp(W / 2 - s.px / 100 * W * z, W - W * z, 0);
-      target.ty = clamp(H / 2 - s.py / 100 * H * z, H - H * z, 0);
+      const z = reduce ? 1 : (touch ? Math.min(s.z, 1.45) : s.z);
       if (i !== stage) {
         stage = i;
+        const tx = clamp(W / 2 - s.px / 100 * W * z, W - W * z, 0), ty = clamp(H / 2 - s.py / 100 * H * z, H - H * z, 0);
+        cam.style.transform = `translate3d(${tx}px, ${ty}px, 0) scale(${z})`; cam.style.setProperty('--z', z);
         lis.forEach((li, k) => li.classList.toggle('on', k === i));
         pins.forEach(p => p.classList.toggle('on', +p.dataset.s === i));
         if (ms) { $('.n', ms).textContent = '0' + (i + 1); $('h3', ms).textContent = s.h; $('p', ms).textContent = s.p; }
@@ -189,25 +182,17 @@
       if (ms) { const mb = $('.bar i', ms); if (mb) mb.style.width = (within * 100) + '%'; }
       lis.forEach((li, k) => { const b = $('.bar i', li); if (b && k !== i) b.style.width = k < i ? '100%' : '0%'; });
     }
-    function tick() {
-      const k = reduce ? 1 : 0.1;
-      cur.tx += (target.tx - cur.tx) * k; cur.ty += (target.ty - cur.ty) * k; cur.z += (target.z - cur.z) * k;
-      cam.style.transform = `translate3d(${cur.tx}px, ${cur.ty}px, 0) scale(${cur.z})`;
-      cam.style.setProperty('--z', cur.z);
-      if (Math.abs(target.tx - cur.tx) > 0.1 || Math.abs(target.ty - cur.ty) > 0.1 || Math.abs(target.z - cur.z) > 0.001) raf = requestAnimationFrame(tick); else raf = null;
-    }
     function update() {
       const r = tall.getBoundingClientRect(), vh = window.innerHeight;
       const total = r.height - vh; const p = clamp(-r.top / total, 0, 0.9999);
       const i = Math.floor(p * n), within = (p * n) - i;
       setStage(i, within);
-      if (!raf) raf = requestAnimationFrame(tick);
     }
     const onS = () => { if (!running) { running = true; requestAnimationFrame(() => { running = false; update(); }); } };
     window.addEventListener('scroll', onS, { passive: true });
-    window.addEventListener('resize', () => { stage = -1; update(); cur = { ...target }; });
+    window.addEventListener('resize', () => { stage = -1; update(); });
     if (lenis) lenis.on('scroll', onS);
-    setStage(0, 0); cur = { ...target }; tick(); update();
+    update();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { stage = -1; update(); });
   }
 
@@ -224,7 +209,6 @@
       const open = menu.classList.toggle('open'); burger.classList.toggle('x', open);
       burger.setAttribute('aria-expanded', open);
       if (lenis) open ? lenis.stop() : lenis.start(); else document.body.style.overflow = open ? 'hidden' : '';
-      if (open && G && !reduce) gsap.from($$('a', menu), { x: -24, opacity: 0, duration: 0.5, stagger: 0.05, delay: 0.2, ease: 'power3.out', clearProps: 'all' });
     });
   }
   window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
