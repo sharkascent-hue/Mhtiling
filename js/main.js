@@ -344,14 +344,17 @@
   $$('#yr').forEach(el => { el.textContent = new Date().getFullYear(); });
 
   /* ---------- ambient background: gold dust particles ---------- */
-  if (!reduce) $$('.hero, .cta, section.dark, footer').forEach(sec => {
+  if (!reduce) $$('.hero, .cta, section, footer').forEach(sec => {
+    if (sec.classList.contains('facts') || sec.classList.contains('hs')) return;
+    const light = !(sec.classList.contains('hero') || sec.classList.contains('cta') || sec.classList.contains('dark') || sec.tagName === 'FOOTER');
     if ($('.bgfx', sec)) return;
-    const fx = document.createElement('div'); fx.className = 'bgfx'; fx.setAttribute('aria-hidden', 'true');
+    const fx = document.createElement('div'); fx.className = 'bgfx' + (light ? ' light' : ''); fx.setAttribute('aria-hidden', 'true');
     const cv = document.createElement('canvas'); fx.appendChild(cv);
     if (getComputedStyle(sec).position === 'static') sec.style.position = 'relative';
     sec.insertBefore(fx, sec.firstChild);
     const ctx = cv.getContext('2d'); let W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2), parts = [], run = false, raf = null;
-    const count = () => Math.round(Math.min(90, Math.max(24, (W * H) / (touch ? 26000 : 16000))));
+    const count = () => Math.round(Math.min(light ? 60 : 90, Math.max(18, (W * H) / (touch ? (light ? 34000 : 26000) : (light ? 22000 : 16000)))));
+    const C = light ? { core: '214,170,70', mid: '169,133,47', dot: '150,112,30', mul: 0.75 } : { core: '227,201,127', mid: '198,162,77', dot: '255,240,200', mul: 1 };
     const mk = (fresh) => ({ x: Math.random() * W, y: fresh ? H + 10 : Math.random() * H, r: 0.6 + Math.random() * 1.8, s: 0.12 + Math.random() * 0.28, a: Math.random() * Math.PI * 2, sw: 0.15 + Math.random() * 0.35, tw: Math.random() * Math.PI * 2, ts: 0.01 + Math.random() * 0.02, o: 0.25 + Math.random() * 0.55 });
     const size = () => { const r = sec.getBoundingClientRect(); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); parts = Array.from({ length: count() }, () => mk(false)); };
     const tick = () => {
@@ -360,11 +363,11 @@
       for (const p of parts) {
         p.y -= p.s; p.a += 0.004; p.x += Math.sin(p.a) * p.sw * 0.3; p.tw += p.ts;
         if (p.y < -10) Object.assign(p, mk(true));
-        const al = p.o * (0.55 + 0.45 * Math.sin(p.tw));
+        const al = p.o * C.mul * (0.55 + 0.45 * Math.sin(p.tw));
         const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-        g.addColorStop(0, `rgba(227,201,127,${al})`); g.addColorStop(0.4, `rgba(198,162,77,${al * 0.35})`); g.addColorStop(1, 'rgba(198,162,77,0)');
+        g.addColorStop(0, `rgba(${C.core},${al})`); g.addColorStop(0.4, `rgba(${C.mid},${al * 0.35})`); g.addColorStop(1, `rgba(${C.mid},0)`);
         ctx.fillStyle = g; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
-        ctx.fillStyle = `rgba(255,240,200,${al})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 0.7, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = `rgba(${C.dot},${al})`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 0.7, 0, Math.PI * 2); ctx.fill();
       }
       raf = requestAnimationFrame(tick);
     };
@@ -373,6 +376,13 @@
     let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 150); });
     document.addEventListener('visibilitychange', () => { if (document.hidden) run = false; else { run = true; if (!raf) raf = requestAnimationFrame(tick); } });
   });
+
+  /* ---------- press feedback on cards ---------- */
+  const pressSel = '.card, .step, .proj, .post, .val, .towns span, .acc details, .tl';
+  document.addEventListener('pointerdown', e => {
+    const el = e.target.closest(pressSel); if (!el) return;
+    el.classList.add('pressed'); clearTimeout(el._pt); el._pt = setTimeout(() => el.classList.remove('pressed'), 900);
+  }, { passive: true });
 
   /* ---------- boot ---------- */
   scrollFx();
