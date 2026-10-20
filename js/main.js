@@ -377,7 +377,7 @@
   });
 
   /* ---------- press feedback on cards ---------- */
-  const pressSel = '.card, .step, .proj, .post, .val, .towns span, .acc details, .tl';
+  const pressSel = '.card, .step, .proj, .post, .val, .towns span';
   document.addEventListener('pointerdown', e => {
     const el = e.target.closest(pressSel); if (!el) return;
     el.classList.add('pressed'); clearTimeout(el._pt); el._pt = setTimeout(() => el.classList.remove('pressed'), 900);
