@@ -118,7 +118,7 @@ html.intro-out #loader{animation:lout .65s ease forwards}
 .hero .ghost{position:absolute;left:-2vw;top:50%;transform:translateY(-50%);font-family:var(--serif);font-weight:700;font-size:42vw;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);z-index:-1;pointer-events:none;user-select:none;white-space:nowrap}
 .hero .glow{position:absolute;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(198,162,77,.18),transparent 60%);right:-20vw;top:-20vw;z-index:-1;pointer-events:none}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-.hero h1{color:#fff;max-width:12ch}
+.hero h1{color:#fff;max-width:18ch}
 .hero .lead{color:rgba(255,255,255,.8);max-width:48ch;margin:26px 0 36px}
 .hero .trust{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:54px;padding-top:28px;border-top:1px solid rgba(255,255,255,.14);font-size:.88rem;color:rgba(255,255,255,.82)}
 .hero .trust span{display:inline-flex;align-items:center;gap:8px}
@@ -598,3 +598,18 @@ html.touch .timeline .tl-line{transition:transform 1.2s ease}
 .cinfo li a,.cinfo li span{overflow-wrap:anywhere;word-break:break-word}
 .social a{max-width:100%}
 
+
+/* ---------- brand heading, reviews ---------- */
+em.g.brand{font-style:normal;color:var(--gold)}
+.dark em.g.brand,.hero em.g.brand,.phero em.g.brand{color:var(--gold-light)}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rev{padding:30px 28px;border:1px solid rgba(198,162,77,.45);border-radius:var(--r);background:rgba(255,255,255,.03)}
+.rev .stars{color:var(--gold);letter-spacing:.15em;font-size:1.1rem;margin-bottom:14px}
+.rev p{font-family:var(--serif);font-size:1.12rem;line-height:1.5;color:#fff;max-width:none}
+.rev b{display:block;margin-top:18px;padding-top:14px;border-top:1px solid rgba(198,162,77,.4);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-light)}
+.rev span{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:.78rem;color:rgba(255,255,255,.6)}
+.rev span svg{width:14px;height:14px;color:var(--gold)}
+@media (max-width:1024px){.reviews{grid-template-columns:1fr}}
+
+@media (max-width:760px){.hero h1{font-size:2.5rem}}
+.hero h1 em.brand{display:inline}

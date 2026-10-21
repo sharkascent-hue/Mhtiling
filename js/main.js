@@ -47,6 +47,10 @@
             w.appendChild(i); frag.appendChild(w);
           });
           node.replaceChild(frag, n);
+        } else if (n.nodeType === 1 && n.classList.contains('brand')) {
+          const w = document.createElement('span'); w.className = 'w'; w.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.08em;margin-bottom:-.08em;max-width:100%';
+          const i = document.createElement('span'); i.style.display = 'inline-block';
+          node.insertBefore(w, n); i.appendChild(n); w.appendChild(i);
         } else if (n.nodeType === 1 && !n.classList.contains('w')) walk(n);
       });
     };
