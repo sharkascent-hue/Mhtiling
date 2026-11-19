@@ -2,23 +2,22 @@
 
 ## Footer credit (applies to every website we build)
 
-Every website must carry a "Website by AlmLab" credit on its own row at the
-very bottom-right of the footer, as the last thing inside `<footer>`. The whole
-"Website by AlmLab" text is one link to our website, not just the word "AlmLab".
+Every website must carry a small "Website by" + AlmLab logo credit on its own row,
+centred at the very bottom of the footer, as the last thing inside `<footer>`.
+The whole credit is one link to our website.
 
-- Text: `Website by AlmLab`
-- Link: `https://almlabmarketing.com`
-- Open in a new tab: `target="_blank" rel="noopener"`
-- Style: glowing neon green wording (`#5dff7f` with a soft green text-shadow glow),
-  set inline so it doesn't depend on the site's stylesheet.
-- On a light footer, put the wording in a small dark pill so the glow stays readable.
-- If a floating button (WhatsApp, call, back-to-top) sits in the bottom-right corner,
-  add bottom padding to the row so the button never covers the credit.
+- Link: `https://almlabmarketing.com`, opened in a new tab (`target="_blank" rel="noopener"`)
+- Logo: `https://almlabmarketing.com/almlab-credit.png` (transparent, white "Alm" + glowing green "Lab")
+  for dark footers; `https://almlabmarketing.com/almlab-credit-dark.png` (dark "Alm") for light footers.
+  Never put it in a box or pill; the background stays transparent.
+- Size: logo 28px tall (the image includes its glow), "Website by" in 11px text (white at 55% on dark footers, black at 55% on light).
+- Spacing: keep it tight, `padding:12px 16px 4px`; no big gap under it.
+- Styles are inline so they don't depend on the site's stylesheet.
 
-Example:
+Example (dark footer):
 
 ```html
-<div class="almlab-credit-row" style="display:flex;justify-content:flex-end;padding:16px 24px 18px"><a class="almlab-credit" href="https://almlabmarketing.com" target="_blank" rel="noopener" style="color:#5dff7f;font-weight:600;font-size:13px;letter-spacing:.03em;text-decoration:none;white-space:nowrap;text-shadow:0 0 4px rgba(93,255,127,.95),0 0 10px rgba(57,255,106,.6),0 0 22px rgba(57,255,106,.35)">Website by AlmLab</a></div>
+<div class="almlab-credit-row" style="display:flex;justify-content:center;padding:12px 16px 4px"><a class="almlab-credit" href="https://almlabmarketing.com" target="_blank" rel="noopener" aria-label="Website by AlmLab" style="display:inline-flex;align-items:center;gap:3px;color:rgba(255,255,255,.55);font-size:11px;letter-spacing:.06em;line-height:1;text-decoration:none;white-space:nowrap"><span>Website by</span><img src="https://almlabmarketing.com/almlab-credit.png" alt="AlmLab" width="74" height="28" loading="lazy" style="height:28px;width:auto;display:block"></a></div>
 ```
 
 Never remove this credit when editing or rebuilding a footer.
